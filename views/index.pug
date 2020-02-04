@@ -1,0 +1,67 @@
+extends layout
+
+block content
+  div.title-book
+    h1 CRUD BOOKS    
+
+  //- Create books
+  div.content_book
+    h2 Create Books
+    form(action="/" method="POST")
+      div
+        label(for="tittle") Title
+        input(type="text" name="title" required="required")
+      div 
+        label(for="tittle") Description
+        input(type="text" name="description" required="required")
+      div 
+        label(for="tittle") Author
+        input(type="text" name="author" required="required")
+      div  
+       button(type="submit") Create
+
+  //- Read books
+  div.content_book   
+    h2 Read Books
+    div.list_books
+     each book in books
+        ul
+          li
+           span Title:&nbsp
+           =book.title
+          li
+           span Description:&nbsp
+           =book.description
+          li
+           span Author:&nbsp
+           =book.author
+          li
+           span ID:&nbsp
+           =book._id 
+
+  //- Update books        
+  div.content_book 
+    h2 Update Books
+    form(action="/update" method="POST")
+      div
+        label(for="tittle") ID
+        input(type="text" name="id" required="required")
+      div
+        label(for="tittle") Title
+        input(type="text" name="title" required="required")
+      div 
+        label(for="tittle") Description
+        input(type="text" name="description" required="required")
+      div 
+        label(for="tittle") Author
+        input(type="text" name="author" required="required")
+      button(type="submit") Update   
+
+  //- Delete books     
+  div.content_book   
+    h2 Delete Books
+    form(action="/delete" method="POST")
+      div
+        label(for="id") ID
+        input(type="text" name="id" required="required")
+      button(type="submit") Delete
