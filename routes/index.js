@@ -36,7 +36,7 @@ router.post("/update", function (req, res, next) {
 // Delete books
 router.post("/delete", function (req, res, next) {
   var id = req.body.id
-  Book.findByIdAndRemove(id, function (err) {
+  Book.findByIdAndDelete(id, function (err) {
     if (err) { console.log(err) }
   })
   res.redirect('/')
