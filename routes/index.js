@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Book = require('../modal/book.modal')
+var Book = require('../models/book.model')
 
 // Read books
 router.get('/', async function (req, res, next) {
