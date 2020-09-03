@@ -14,10 +14,14 @@ router.post('/', function (req, res, next) {
   newbook.title = req.body.title;
   newbook.description = req.body.description;
   newbook.author = req.body.author;
-  newbook.save().then(function (err) {
+  newbook.save()
+  .then(function () {
+    res.redirect('/')
+  })
+  .catch(function (err) {
     if (err) { console.log(err) }
   })
-  res.redirect('/')
+
 })
 
 // Update books
@@ -35,7 +39,7 @@ router.post("/update", function (req, res, next) {
 
 // Delete books
 router.post("/delete", function (req, res, next) {
-  var id = req.body.id
+  let id = req.body.id
   Book.findByIdAndDelete(id, function (err) {
     if (err) { console.log(err) }
   })
